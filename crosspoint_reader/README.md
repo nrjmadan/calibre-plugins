@@ -49,9 +49,9 @@ enabled (Preferences > Plugins > device config >
   the source EPUB.
 
 The target screen size comes from the device profile — **X4 = 480×800**,
-**X3 = 528×792** — which is auto-detected from the device's `/api/status`
-endpoint on connect (matching the web UI), or can be set manually
-(Auto / X4 / X3) in the plugin settings.
+**X4 Pro = 480×800**, **X3 = 528×792** — which is auto-detected from the device's
+`/api/status` endpoint on connect (matching the web UI), or can be set manually
+(Auto / X4 / X4 Pro / X3) in the plugin settings.
 
 When a transfer starts, a live dialog opens and streams the optimization steps
 as they happen (per book: each image's before→after size, fixes, and upload),
@@ -66,9 +66,9 @@ never blocked.
    **CrossPoint Reader**, and click **Customize plugin**.
 2. Check **Optimize EPUBs before transfer**.
 3. Set the options below it (they enable once the box is checked):
-   - **Device target** — leave on **Auto-detect** to read X3/X4 from the device
-     on connect, or force **X4** / **X3**. Auto-detect falls back to X4 if the
-     device can't be queried.
+   - **Device target** — leave on **Auto-detect** to read X3/X4/X4 Pro from the
+     device on connect, or force **X4** / **X4 Pro** / **X3**. Auto-detect falls
+     back to X4 if the device can't be queried.
    - **JPEG quality** — 1–100 (default 85). Lower = smaller files.
    - **Convert images to grayscale** — on by default (recommended for e-ink).
    - **Auto-crop uniform margins** — off by default; trims solid page borders.

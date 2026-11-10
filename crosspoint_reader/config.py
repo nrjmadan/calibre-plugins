@@ -39,7 +39,7 @@ PREFS.defaults['optimize_grayscale'] = True
 PREFS.defaults['optimize_auto_crop'] = False
 PREFS.defaults['optimize_quality'] = 85
 PREFS.defaults['optimize_split'] = True
-PREFS.defaults['device_target'] = 'auto'  # 'auto' | 'X4' | 'X3'
+PREFS.defaults['device_target'] = 'auto'  # 'auto' | 'X4' | 'X4 Pro' | 'X3'
 
 
 class CrossPointConfigWidget(QWidget):
@@ -82,6 +82,7 @@ class CrossPointConfigWidget(QWidget):
         self.device_target = QComboBox(self)
         self.device_target.addItem('Auto-detect', 'auto')
         self.device_target.addItem('X4 (480×800)', 'X4')
+        self.device_target.addItem('X4 Pro (480×800)', 'X4 Pro')
         self.device_target.addItem('X3 (528×792)', 'X3')
 
         self.host.setText(PREFS['host'])

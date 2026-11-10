@@ -4,7 +4,7 @@ This is a Python port of the client-side optimizer that ships in the CrossPoint
 web server (``FilesPage.html``). It mirrors the "core" optimization path used by
 the device's web UI when no manual per-image splitting is selected:
 
-    * resolve a device profile (X4 = 480x800, X3 = 528x792, portrait short x long)
+    * resolve a device profile (X4 = 480x800, X4 Pro = 480x800, X3 = 528x792, portrait short x long)
     * for every raster image inside the EPUB:
         - optional auto-crop of uniform margins
         - scale to fit the device screen (preserving aspect ratio)
@@ -36,6 +36,7 @@ from .positionmap import MAP_PATH, UNAVAILABLE
 # --- Device profiles (short edge x long edge, portrait) ---------------------
 DEVICE_PROFILES = {
     'X4': {'width': 480, 'height': 800, 'label': 'X4'},
+    'X4 Pro': {'width': 480, 'height': 800, 'label': 'X4 Pro'},
     'X3': {'width': 528, 'height': 792, 'label': 'X3'},
 }
 DEFAULT_DEVICE = 'X4'
@@ -70,7 +71,7 @@ _COVER_NAME_RE = re.compile(
 
 
 def resolve_profile(device_target, detected_device):
-    """Resolve 'auto' | 'X4' | 'X3' (+ detected model) to a concrete profile dict."""
+    """Resolve 'auto' | 'X4' | 'X4 Pro' | 'X3' (+ detected model) to a concrete profile dict."""
     if device_target and device_target.upper() in DEVICE_PROFILES:
         key = device_target.upper()
     else:  # 'auto' (or anything unexpected)

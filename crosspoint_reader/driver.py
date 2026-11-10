@@ -114,11 +114,14 @@ class CrossPointDevice(DeviceConfig, DevicePlugin):
         return False
 
     def _detect_device_model(self):
-        """Query /api/status for the device model (X3/X4), like the web UI."""
+        """Query /api/status for the device model (X3/X4/X4 Pro), like the web UI."""
         try:
             status = self._http_get_json('/api/status', timeout=4)
             model = (status or {}).get('device')
-            if model in ('X3', 'X4'):
+            if model == 'xteink_x4_pro':
+                self.device_model = 'X4 Pro'
+                self._log(f'[CrossPoint] detected device model: {model}')
+            elif model in ('X3', 'X4'):
                 self.device_model = model
                 self._log(f'[CrossPoint] detected device model: {model}')
             else:
